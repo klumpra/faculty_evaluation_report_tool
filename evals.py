@@ -41,7 +41,6 @@ score_fname = "C:\\Users\\klumpra\\Dropbox\\coast\\ray_stuff\\faculty_evaluation
 dest_folder = "c:\\temp\\fac_evals"
 
 
-workbook = xlrd.open_workbook(score_fname)
 workbook = xlrd.open_workbook(score_fname, on_demand = True)
 worksheet = workbook.sheet_by_index(0)
 def extract_score(row,col):
@@ -370,6 +369,8 @@ for program in courses_by_program:
             fvar.write("</table>\n")
     fvar.write("</body></html>")
     fvar.close()
+workbook.release_resources()
+del workbook
 print("Done")
 
         
